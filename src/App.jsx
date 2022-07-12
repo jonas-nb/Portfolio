@@ -1,24 +1,26 @@
-import React from "react";
-import Sidebar from "./01 - header/sideBar/Sidebar";
-import { Route, Routes } from "react-router-dom";
-import AboutMe from "./02 - main/AboutMe";
-import FooterPage from "./03 - footer/FooterPage";
-import WorkSection from "./02 - main/WorkPage/WorkSection";
-import ContactPage from "./02 - main/Contact/ContactPage";
-const App = () => {
-  return (
-    <div>
-      <div className="">
-        <Sidebar />
-      </div>
-      <Routes>
-        <Route path="/" element={<AboutMe />} />
-        <Route path="/work" element={<WorkSection />} />
-        <Route path="/about" element={<ContactPage />} />
-      </Routes>
-      <FooterPage />
-    </div>
-  );
-};
+import React, { useContext } from 'react'
+import { GlobalStorage } from './Components/Contexts/MyContext'
+import Header from './Components/Headers/Header'
+import { Route, Routes } from 'react-router-dom'
+import InitialPage from './Components/main/Home/InitialPage'
+import About from './Components/main/Sobre/About'
+import ProjectsContainer from './Components/main/Projects/ProjectsContainer'
+import { Footer } from 'flowbite-react'
+import MyFooter from './Components/Footer/MyFooter'
 
-export default App;
+const App = () => {
+    return (
+        <div>
+            <GlobalStorage>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<InitialPage />} />
+                    <Route path="/Sobre" element={<About />} />
+                    <Route path="/Projetos" element={<ProjectsContainer />} />
+                </Routes>
+            </GlobalStorage>
+        </div>
+    )
+}
+
+export default App
